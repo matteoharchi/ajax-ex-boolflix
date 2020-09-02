@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <!-- JQUERY -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <!-- HANDLEBARS -->
+        <script src ="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+        <title></title>
+    </head>
+    <body>
+        <input id="searchbar" type="search" name="" value="">
+        <button id="searchbutton" type="button" name="button">Search</button>
+        <div class="results">
+
+        </div>
+        <script id="movie-template" type="text/x-handlebars-template">
+            <h4>{{title}}</h4>
+            <p><strong>Titolo originale:</strong>{{original-title}}</p>
+            <p><strong>Lingua:</strong>{{language}}</p>
+            <p><strong>Voto:</strong>{{vote}}</p>
+
+        </script>
+
+
+
+
+
+
+        <script src="js\script.js" charset="utf-8"></script>
+    </body>
+</html>
