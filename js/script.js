@@ -28,10 +28,10 @@ $(document).ready(function(){
                         var item = {
                             "title": selectedmovie[i].title,
                             "original-title": selectedmovie[i].original_title,
-                            "language": selectedmovie[i].original_language,
+                            "language": language(selectedmovie[i].original_language),
                             "vote": insertStars(selectedmovie[i].vote_average)
                         };
-                        console.log(item);
+                        console.log(item.language);
                         var html = template(item);
                         $(".results").append(html);
 
@@ -42,15 +42,25 @@ $(document).ready(function(){
         })
     }
     function insertStars(n){
-        var final = "";
-        var final2= "";
+        var stellePiene = "";
+        var stelleVuote= "";
         var grade = Math.ceil(n / 2);
         for (var i = 0; i < grade; i++) {
-            final = final+'<i class="fas fa-star full"></i>';
+            stellePiene = stellePiene+'<i class="fas fa-star full"></i>';
         };
         for (var i = 0; i < (5-grade); i++) {
-            final2 = final2+'<i class="fas fa-star empty"></i>';
+            stelleVuote = stelleVuote+'<i class="fas fa-star empty"></i>';
         };
-        return final+final2;
+        return stellePiene+stelleVuote;
+    };
+    function language (lang){
+        var en = '<img src="img/icons8-great-britain-22.png" alt="">'
+        var it = '<img src="img/icons8-italy-22.png" alt="">'
+        if (lang == "en") {
+            lang = en;
+        } else if (lang == "it") {
+            lang = it;
+        }
+        return lang;
     }
-})
+});

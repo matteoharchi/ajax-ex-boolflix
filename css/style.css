@@ -1,3 +1,6 @@
+p img{
+    margin-bottom: -5px;
+}
 i.fa-star.empty{
     color: lightgrey;
 }
