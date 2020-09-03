@@ -30,7 +30,8 @@ $(document).ready(function(){
                             "title": selectedmovie[i].title,
                             "original-title": selectedmovie[i].original_title,
                             "language": language(selectedmovie[i].original_language),
-                            "vote": insertStars(selectedmovie[i].vote_average)
+                            "vote": insertStars(selectedmovie[i].vote_average),
+                            "type" : "film",
                         };
                         console.log(item.language);
                         var html = template(item);
@@ -56,7 +57,8 @@ $(document).ready(function(){
                             "title": selectedseries[i].name,
                             "original-title": selectedseries[i].original_name,
                             "language": language(selectedseries[i].original_language),
-                            "vote": insertStars(selectedseries[i].vote_average)
+                            "vote": insertStars(selectedseries[i].vote_average),
+                            "type" : "serieTV",
                         };
                         var html = template(tv);
                         $(".results").append(html);
