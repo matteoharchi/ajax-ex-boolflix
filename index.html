@@ -2,11 +2,14 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="css/style.css">
         <!-- JQUERY -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
         <!-- HANDLEBARS -->
         <script src ="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
+        <!-- FONTAWESOME -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
         <title></title>
     </head>
     <body>
@@ -18,8 +21,8 @@
         <script id="movie-template" type="text/x-handlebars-template">
             <h4>{{title}}</h4>
             <p><strong>Titolo originale:</strong>{{original-title}}</p>
-            <p><strong>Lingua:</strong>{{language}}</p>
-            <p><strong>Voto:</strong>{{vote}}</p>
+            <p><strong>Lingua originale:</strong>{{language}}</p>
+            <p id="voto"><strong>Voto:</strong>{{{vote}}}</i></p>
 
         </script>
 
