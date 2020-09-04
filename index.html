@@ -15,10 +15,16 @@
     <body>
         <input id="searchbar" type="search" name="" value="">
         <button id="searchbutton" type="button" name="button">Search</button>
-        <div class="results">
+        <div class="list">
+            <h2>Film</h2>
+            <div class="results-Film">
+            </div>
+            <h2>Serie</h2>
+            <div class="results-Serie">
+            </div>
 
         </div>
-        <script id="movie-template" type="text/x-handlebars-template">
+        <script id="template" type="text/x-handlebars-template">
             <h4>{{title}}</h4>
             <p><strong>Titolo originale: </strong>{{original-title}}</p>
             <p><strong>Lingua originale: </strong>{{{language}}}</p>
@@ -33,6 +39,6 @@
 
 
 
-        <script src="js\script.js" charset="utf-8"></script>
+        <script src="js\scriptprova.js" charset="utf-8"></script>
     </body>
 </html>

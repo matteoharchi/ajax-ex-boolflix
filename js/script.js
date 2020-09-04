@@ -33,7 +33,6 @@ $(document).ready(function(){
                             "vote": insertStars(selectedmovie[i].vote_average),
                             "type" : "film",
                         };
-                        console.log(item.language);
                         var html = template(item);
                         $(".results").append(html);
 
@@ -69,7 +68,7 @@ $(document).ready(function(){
                 }
             })
     }
-    //funzione stelle
+    //funzione stelle CORREGGI CON UN SOLO CICLO FOR
     function insertStars(n){
         var stellePiene = "";
         var stelleVuote= "";

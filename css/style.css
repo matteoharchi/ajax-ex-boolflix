@@ -4,6 +4,6 @@ p img{
 i.fa-star.empty{
     color: lightgrey;
 }
-i.fa-star.full{
+i.full{
     color: blue;
 }
