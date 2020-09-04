@@ -33,7 +33,7 @@ $(document).ready(function(){
                         var poster = selectedmovie[i].poster_path;
                         var src = 'https://image.tmdb.org/t/p/w342/' + poster;
                         var item = {
-                            "poster":'<img src="' + src + '" alt="' + selectedmovie[i].title + '" class="poster">',
+                            "poster":addPoster(poster, selectedmovie[i].title),
                             "title": selectedmovie[i].title || selectedmovie[i].name,
                             "original-title": selectedmovie[i].original_title || selectedmovie[i].original_name,
                             "language": language(selectedmovie[i].original_language),
@@ -92,3 +92,12 @@ $(document).ready(function(){
         return lang;
     }
 });
+
+function addPoster(image, title){
+    var src = 'https://image.tmdb.org/t/p/w342/' + image;
+    if (image != null) {
+        return '<img src="' + src + '" alt="' + title + '" class="poster">';
+    }else {
+        return '<img src="img/no.jpg">';
+    }
+}
