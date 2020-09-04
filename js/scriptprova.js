@@ -1,8 +1,9 @@
 $(document).ready(function(){
-    var urlFilm = "https://api.themoviedb.org/3/search/movie?api_key=9fa935e79bf8d2bc13f91abd5721f117";
-    var urlTV = "https://api.themoviedb.org/3/search/tv?api_key=9fa935e79bf8d2bc13f91abd5721f117";
-
+    var urlFilm = "https://api.themoviedb.org/3/search/movie?";
+    var urlTV = "https://api.themoviedb.org/3/search/tv?";
+    var risultati= [];
     $("#searchbutton").click(function(){
+        risultati= [];
         var ricerca = $("#searchbar").val();
         $(".results-Film").html("");
         $(".results-Serie").html("");
@@ -22,20 +23,29 @@ $(document).ready(function(){
                 url: url,
                 method: "GET",
                 data: {
+                    api_key : "9fa935e79bf8d2bc13f91abd5721f117",
                     query: data,
                     language: "it-IT",
                 },
                 success: function(movie){
                     var selectedmovie = movie.results;
                     for (var i = 0; i < selectedmovie.length; i++) {
+                        var poster = selectedmovie[i].poster_path;
+                        var src = 'https://image.tmdb.org/t/p/w342/' + poster;
                         var item = {
+                            "poster":'<img src="' + src + '" alt="' + selectedmovie[i].title + '" class="poster">',
                             "title": selectedmovie[i].title || selectedmovie[i].name,
                             "original-title": selectedmovie[i].original_title || selectedmovie[i].original_name,
                             "language": language(selectedmovie[i].original_language),
                             "vote": insertStars(selectedmovie[i].vote_average),
                             "type" : type,
                         };
-                        stampa(item, type);
+                        if (movie.total_results > 0) {
+                            stampa(item, type);
+                        }else {
+                            noResult(type);
+                        }
+
                     }
                 }, error: function(){
                     alert("Si è presentato un errore nella ricerca di"+type)
@@ -50,6 +60,7 @@ $(document).ready(function(){
         var template = Handlebars.compile(source);
         var html = template(item);
         $(".results-" + type).append(html);
+
     }
 
     //funzione stelle CORREGGI CON UN SOLO CICLO FOR
