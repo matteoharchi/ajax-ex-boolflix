@@ -1,9 +1,80 @@
-p img{
+/* GENERAL */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-color: white;
+    width: 100%;
+}
+
+/* HEADER */
+header {
+    height: 80px;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+}
+/* titolo */
+.pagename{
+    line-height: 80px;
+    vertical-align: middle;
+    margin-left: 30px;
+    color: red;
+}
+/* ricerca */
+.research {
+    line-height: 80px;
+    vertical-align: middle;
+    margin-right: 30px;
+}
+/* menù */
+.list-menu {
+    display: flex;
+    list-style-type: none;
+    line-height: 80px;
+    vertical-align: middle;
+}
+.list-menu li {
+    padding-right: 30px;
+}
+
+
+/* MAIN */
+/* categorie */
+
+h2 {
+    margin: 20px 0;
+}
+/* cards */
+.list-Film,
+.list-Serie{
+    margin-left: 30px;
+}
+.results-Film,
+.results-Serie{
+    display: flex;
+    overflow-x: scroll;
+}
+.card {
+    width: 342px;
+}
+img.poster {
+    width: 342px;
+    height:512px
+}
+#info {
+    padding: 10px;
+}
+#lingua img{
     margin-bottom: -5px;
 }
-i.fa-star.empty{
+#voto i.fa-star.empty{
     color: lightgrey;
 }
-i.full{
+#voto i.full{
     color: blue;
 }
+/* FOOTER */

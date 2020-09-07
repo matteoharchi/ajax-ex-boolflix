@@ -13,24 +13,48 @@
         <title></title>
     </head>
     <body>
-        <input id="searchbar" type="search" name="" value="">
-        <button id="searchbutton" type="button" name="button">Search</button>
-        <div class="list">
-            <h2>Film</h2>
-            <div class="results-Film">
+        <header>
+            <h1 class="pagename">BOOLFLIX</h1>
+            <div class="menu">
+                <ul class="list-menu">
+                    <li>Film</li>
+                    <li>Serie TV</li>
+                    <li>Filtra per genere</li>
+                </ul>
             </div>
-            <h2>Serie</h2>
-            <div class="results-Serie">
+            <div class="research">
+                <input id="searchbar" type="search" name="" value="">
+                <button id="searchbutton" type="button" name="button">Search</button>
+            </div>
+        </header>
+        <main>
+            <div class="list">
+                <div class="list-Film">
+                    <h2 class="hide">Film</h2>
+                    <div class="results-Film">
+                    </div>
+                </div>
+                <div class="list-Serie">
+                    <h2 class="hide">Serie</h2>
+                    <div class="results-Serie">
+                    </div>
+                </div>
+
             </div>
 
-        </div>
+        </main>
         <script id="template" type="text/x-handlebars-template">
-            <div> {{{poster}}}</div>
-            <h4>{{title}}</h4>
-            <p><strong>Titolo originale: </strong>{{original-title}}</p>
-            <p><strong>Lingua originale: </strong>{{{language}}}</p>
-            <p id="voto"><strong>Voto: </strong>{{{vote}}}</i></p>
-            <p id="voto"><strong>Tipo: </strong>{{type}}</i></p>
+            <div class="card">
+                <div> {{{poster}}}</div>
+                <div id="info">
+                    <h4>{{title}}</h4>
+                    <p><strong>Titolo originale: </strong>{{original-title}}</p>
+                    <p id="lingua"><strong>Lingua originale: </strong>{{{language}}}</p>
+                    <p id="voto"><strong>Voto: </strong>{{{vote}}}</i></p>
+                    <p id="tipo"><strong>Tipo: </strong>{{type}}</p>
+                    <p id="trama"><strong>Trama: </strong>{{storyline}} <span class="puntini"> [...]</span></p>
+                </div>
+            </div>
 
         </script>
 
