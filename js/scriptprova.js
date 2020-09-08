@@ -30,21 +30,36 @@ $(document).ready(function(){
         }
         });
 
-    //Tasti scroll
-    var buttonRight = $('.rightscroll');
-    var buttonLeft = $('.leftscroll');
+    //Tasti scroll film
 
-    buttonRight.click(function () {
-      $('.results-Film').scrollRight=200;
-  });
-    buttonLeft.click(function () {
-      $('.results-Film').scrollLeft=200;
-  });
+    $(".leftscroll.Film").click(function(){
+        scrollButtonSx($(".leftscroll.Film"), $(".results-Film"))
+    });
+    $(".rightscroll.Film").click(function(){
+        scrollButtonDx($(".rightscroll.Film"), $(".results-Film"))
+    })
+    $(".leftscroll.Serie").click(function(){
+        scrollButtonSx($(".leftscroll.Serie"), $(".results-Serie"))
+    });
+    $(".rightscroll.Serie").click(function(){
+        scrollButtonDx($(".rightscroll.Serie"), $(".results-Serie"))
+    })
+
 });
 
-
-
 // FUNZIONI
+
+//funzioni scrollButtons
+function scrollButtonDx(button, place){
+    var buttonRight= $(button);
+    var position= $(place).scrollLeft();
+    return $(place).scrollLeft(position+=200);
+}
+function scrollButtonSx(button, place){
+    var buttonRight= $(button);
+    var position= $(place).scrollLeft();
+    return $(place).scrollLeft(position-=200);
+}
 
 
 //funzione chiamata AJAX film e serie in trend
@@ -92,6 +107,8 @@ function movieProfile(movie, type, urlCast){
         for (var i = 0; i < selectedmovie.length; i++) {
             var poster = selectedmovie[i].poster_path;
             var src = 'https://image.tmdb.org/t/p/w342/' + poster;
+            var prova= cast(type, selectedmovie[i].id);
+            console.log(prova);
             var item = {
                 "poster":addPoster(poster, selectedmovie[i].title),
                 "title": selectedmovie[i].title || selectedmovie[i].name,
@@ -112,7 +129,7 @@ function movieProfile(movie, type, urlCast){
         }
     }
 
-//funzione per Cast
+//funzione per Cast DA SISTEMARE
 
 function cast(type, id){
     if (type == "Film") {
@@ -133,7 +150,7 @@ function cast(type, id){
                 // console.log(nomi);
                 return nomi;
             }, error: function(){
-                alert("errore")
+                alert("errore");
             }
     });
 
@@ -185,7 +202,7 @@ function addPoster(image, title){
     }
 };
 
-//funzione trama, cerco di fare in modo che cliccando i puntini di spospensione possa aprire tutta la trama.
+//funzione trama
 
 function storyLine(film){
     var trama = film.overview.substring(0,250);

@@ -57,7 +57,7 @@ h2 {
 .results-Film,
 .results-Serie{
     display: flex;
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 .card {
     width: 342px;
@@ -66,6 +66,7 @@ h2 {
 .film-image{
     width: 342px;
     height:512px;
+    overflow-y: hidden;
 }
 img.poster {
     width: 100%;
