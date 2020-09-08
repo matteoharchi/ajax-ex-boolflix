@@ -9,7 +9,8 @@
         <!-- HANDLEBARS -->
         <script src ="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
         <!-- FONTAWESOME -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"></link>
+
         <title></title>
     </head>
     <body>
@@ -45,14 +46,16 @@
         </main>
         <script id="template" type="text/x-handlebars-template">
             <div class="card">
-                <div> {{{poster}}}</div>
-                <div id="info">
+                <div class="film-image"> {{{poster}}}</div>
+                <div class="info hover">
                     <h4>{{title}}</h4>
                     <p><strong>Titolo originale: </strong>{{original-title}}</p>
                     <p id="lingua"><strong>Lingua originale: </strong>{{{language}}}</p>
                     <p id="voto"><strong>Voto: </strong>{{{vote}}}</i></p>
                     <p id="tipo"><strong>Tipo: </strong>{{type}}</p>
                     <p id="trama"><strong>Trama: </strong>{{storyline}} <span class="puntini"> [...]</span></p>
+                    <p id="tipo"><strong>Cast: </strong>{{actors}}</p>
+
                 </div>
             </div>
 
