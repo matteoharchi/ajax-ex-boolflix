@@ -3,12 +3,11 @@ $(document).ready(function(){
     var urlTrendSerie = "https://api.themoviedb.org/3/trending/tv/week?";
     var urlFilm = "https://api.themoviedb.org/3/search/movie?";
     var urlTV = "https://api.themoviedb.org/3/search/tv?";
-    var urlCreditsFilm="https://api.themoviedb.org/3/movie/{movie_id}/credits?";
-    var urlCreditsTV="https://api.themoviedb.org/3/tv/{tv_id}/credits?";
+    // var urlCreditsTV="https://api.themoviedb.org/3/tv/{tv_id}/credits?";
 
 
-    insertTrend("movie", urlTrend, "Film", urlCreditsFilm);
-    insertTrend("tv", urlTrendSerie, "Serie", urlCreditsTV);
+    insertTrend("movie", urlTrend, "Film");
+    insertTrend("tv", urlTrendSerie, "Serie");
 
     $("#searchbutton").click(function(){
         $(".hide").removeClass("hide");
@@ -30,6 +29,17 @@ $(document).ready(function(){
 
         }
         });
+
+    //Tasti scroll
+    var buttonRight = $('.rightscroll');
+    var buttonLeft = $('.leftscroll');
+
+    buttonRight.click(function () {
+      $('.results-Film').scrollRight=200;
+  });
+    buttonLeft.click(function () {
+      $('.results-Film').scrollLeft=200;
+  });
 });
 
 
@@ -90,7 +100,8 @@ function movieProfile(movie, type, urlCast){
                 "vote": insertStars(selectedmovie[i].vote_average),
                 "type" : type,
                 "storyline": storyLine(selectedmovie[i]),
-                // "actors": cast(urlCast, selectedmovie[i]),
+                "actors": cast(type, selectedmovie[i].id)
+
             };
             if (movie.total_results > 0) {
                 stampa(item, type);
@@ -103,21 +114,30 @@ function movieProfile(movie, type, urlCast){
 
 //funzione per Cast
 
-// function cast(url, movie){
-//     $.ajax (
-//         {
-//             url: url,
-//             api_key : "9fa935e79bf8d2bc13f91abd5721f117",
-//             data:{
-//                 movie_id: movie.id,
-//             },
-//             success:function(response){
-//                 var actors = response.cast.slice(0,4);
-//                 return actors
-//             }
-//     })
-//
-// }
+function cast(type, id){
+    if (type == "Film") {
+        var tipo = "movie";
+    }else {
+        tipo = "tv"
+    }
+    $.ajax (
+        {
+            url:'https://api.themoviedb.org/3/'+tipo+"/"+id+'/credits?api_key=9fa935e79bf8d2bc13f91abd5721f117',
+            success:function(response){
+                var cast = response.cast;
+                var castRidotto = cast.slice(0,4);
+                var nomi = [];
+                for (var i = 0; i < castRidotto.length; i++) {
+                    nomi.push(castRidotto[i].name);
+                }
+                // console.log(nomi);
+                return nomi;
+            }, error: function(){
+                alert("errore")
+            }
+    });
+
+}
 //funzione stampa
 
 function stampa(item, type){
@@ -140,7 +160,7 @@ function insertStars(n){
             stars += '<i class="fas fa-star-half-alt full"</i>';
             resto = 0;
         } else {
-            stars += '<i class="fas fa-star empty"></i>'
+            stars += '<i class="far fa-star"></i>'
         }
     }
     return stars
@@ -168,6 +188,6 @@ function addPoster(image, title){
 //funzione trama, cerco di fare in modo che cliccando i puntini di spospensione possa aprire tutta la trama.
 
 function storyLine(film){
-    var trama = film.overview;
+    var trama = film.overview.substring(0,250);
     return trama
 };

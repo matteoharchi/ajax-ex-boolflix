@@ -10,7 +10,8 @@
         <script src ="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script>
         <!-- FONTAWESOME -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"></link>
-
+        <!-- GOOGLE FONTS -->
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
         <title></title>
     </head>
     <body>
@@ -31,9 +32,13 @@
         <main>
             <div class="list">
                 <div class="list-Film">
-                    <h2 class="hide">Film</h2>
+                    <h2>Film</h2>
                     <div class="results-Film">
                     </div>
+                </div>
+                <div class="scrollbuttons">
+                    <button class="leftscroll" type="button" name="button"><</button>
+                    <button class="rightscroll" type="button" name="button">></button>
                 </div>
                 <div class="list-Serie">
                     <h2 class="hide">Serie</h2>
@@ -44,6 +49,10 @@
             </div>
 
         </main>
+        <footer>
+
+            <p><i>2020, Matteo Harchi, Boolean Careers</i></p>
+        </footer>
         <script id="template" type="text/x-handlebars-template">
             <div class="card">
                 <div class="film-image"> {{{poster}}}</div>
@@ -53,8 +62,8 @@
                     <p id="lingua"><strong>Lingua originale: </strong>{{{language}}}</p>
                     <p id="voto"><strong>Voto: </strong>{{{vote}}}</i></p>
                     <p id="tipo"><strong>Tipo: </strong>{{type}}</p>
-                    <p id="trama"><strong>Trama: </strong>{{storyline}} <span class="puntini"> [...]</span></p>
-                    <p id="tipo"><strong>Cast: </strong>{{actors}}</p>
+                    <p id="trama"><strong>Trama: </strong>{{storyline}} <span>[...]</span></p>
+                    <p id="cast"><strong>Cast: </strong>{{actors}}</p>
 
                 </div>
             </div>
