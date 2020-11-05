@@ -3,7 +3,6 @@ $(document).ready(function(){
     var urlTrendSerie = "https://api.themoviedb.org/3/trending/tv/week?";
     var urlFilm = "https://api.themoviedb.org/3/search/movie?";
     var urlTV = "https://api.themoviedb.org/3/search/tv?";
-    // var urlCreditsTV="https://api.themoviedb.org/3/tv/{tv_id}/credits?";
 
 
     insertTrend("movie", urlTrend, "Film");
@@ -107,8 +106,6 @@ function movieProfile(movie, type, urlCast){
         for (var i = 0; i < selectedmovie.length; i++) {
             var poster = selectedmovie[i].poster_path;
             var src = 'https://image.tmdb.org/t/p/w342/' + poster;
-            var prova= cast(type, selectedmovie[i].id);
-            console.log(prova);
             var item = {
                 "poster":addPoster(poster, selectedmovie[i].title),
                 "title": selectedmovie[i].title || selectedmovie[i].name,
@@ -117,7 +114,6 @@ function movieProfile(movie, type, urlCast){
                 "vote": insertStars(selectedmovie[i].vote_average),
                 "type" : type,
                 "storyline": storyLine(selectedmovie[i]),
-                "actors": cast(type, selectedmovie[i].id)
 
             };
             if (movie.total_results > 0) {
@@ -129,32 +125,7 @@ function movieProfile(movie, type, urlCast){
         }
     }
 
-//funzione per Cast DA SISTEMARE
 
-function cast(type, id){
-    if (type == "Film") {
-        var tipo = "movie";
-    }else {
-        tipo = "tv"
-    }
-    $.ajax (
-        {
-            url:'https://api.themoviedb.org/3/'+tipo+"/"+id+'/credits?api_key=9fa935e79bf8d2bc13f91abd5721f117',
-            success:function(response){
-                var cast = response.cast;
-                var castRidotto = cast.slice(0,4);
-                var nomi = [];
-                for (var i = 0; i < castRidotto.length; i++) {
-                    nomi.push(castRidotto[i].name);
-                }
-                // console.log(nomi);
-                return nomi;
-            }, error: function(){
-                alert("errore");
-            }
-    });
-
-}
 //funzione stampa
 
 function stampa(item, type){
@@ -205,6 +176,10 @@ function addPoster(image, title){
 //funzione trama
 
 function storyLine(film){
-    var trama = film.overview.substring(0,250);
+    if (film.overview.length > 250) {
+        var trama = film.overview.substring(0,250) + '...';   
+    }else{
+        trama= film.overview;
+    }
     return trama
 };

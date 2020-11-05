@@ -6,7 +6,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 body {
-    background-color: white;
+    background-color: black;
     width: 100%;
 }
 
@@ -14,7 +14,7 @@ body {
 header {
     height: 80px;
     width: 100%;
-    background-color: white;
+    background-color: black;
     display: flex;
     justify-content: space-between;
 }
@@ -48,11 +48,13 @@ header {
 
 h2 {
     margin: 20px 0;
+    color: white;
 }
 /* cards */
 .list-Film,
 .list-Serie{
     margin-left: 30px;
+    margin-bottom: 30px;
 }
 .results-Film,
 .results-Serie{
@@ -79,8 +81,9 @@ img.poster {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(100, 100, 100, 0.8);
+    background-color: rgba(7, 5, 5, 0.8);
     display: none;
+    color: white;
 }
 .card:hover .info{
     display: block;
@@ -94,6 +97,35 @@ img.poster {
 #voto i.full{
     color: blue;
 }
+#trama {
+    position: absolute;
+    bottom: 10px;
+}
+
+/* Buttons */
+.scrollbuttons{
+    position: relative;
+    height: 50px;
+    margin-bottom: 30px;
+}
+.scrollbuttons button{
+    height: 30px;
+    width: 50px;
+    background-color: red;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    position: absolute;
+    margin-top: 20px;
+}
+.leftscroll{
+    left: 30px;
+}
+.rightscroll{
+    right:30px;
+}
+
+
 /* FOOTER */
 footer{
     height: 80px;
